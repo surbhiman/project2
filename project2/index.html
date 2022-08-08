@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transitioning square</title>
+
+    <style>
+        body{
+            background-color: rgb(197, 78, 78);
+        }
+
+        h1{
+            text-align: center;
+            color: wheat;
+            color: white;
+            text-shadow: -2px 1px 0 #000,
+                          2px 1px 0 #000,
+                         2px -1px 0 #000,
+                        -2px -1px 0 #000;
+        }
+
+        input{
+            width: 80%;
+            height: 35px;
+            /* text-align: center; */
+            margin: 70px 0px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: rgb(167, 91, 91);
+            color: wheat;
+            text-shadow: -1px 1px 0 #000,
+                          1px 1px 0 #000,
+                         1px -1px 0 #000,
+                        -1px -1px 0 #000;
+        }
+
+        button{
+            background-color: rgb(148, 82, 82);
+            height: 45px;
+            width: 30%;
+            border-radius: 10px;
+            color: wheat;
+            text-shadow: -1px 1px 0 #000,
+                          1px 1px 0 #000,
+                         1px -1px 0 #000,
+                        -1px -1px 0 #000;
+            /* margin: 0px 50px  ; */
+            
+        }
+
+        #square_box{
+            transition: all 2s;
+        }
+    </style>
+
+
+    <script>
+
+        function myfunc(){
+            let len = document.getElementById("input_field").value.length;
+            let num = document.getElementById("input_field").value; 
+            num = Number(num);
+            // alert(len);
+            if(len < 5 || len > 5){
+                alert("Only 5 digits allowed");
+            }
+            else{
+                let rem,sum=0;
+                while(num!=0){
+                    rem = num%10;
+                    sum = sum + rem;
+                    num = Math.floor(num/10);
+                }
+                // alert(sum);
+                let radius = sum/5;
+                const square = document.getElementById("square_box") ;
+
+                square.style.height = sum +"px";
+                square.style.width = sum +"px"
+                square.style.backgroundColor =" rgb(63, 28, 28)";
+                square.style.borderRadius = radius + "px";
+                square.style.margin = "30px";
+
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <center>
+         <h1>Enter a number to create Square Shape</h1>
+        <input type="number" max="5" id="input_field">
+        <button onclick="myfunc()">Create Square Shape</button>
+        <div id="square_box"></div>
+    </center>
+   
+</body>
+</html>
